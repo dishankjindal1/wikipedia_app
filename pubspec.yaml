@@ -15,6 +15,9 @@ dependencies:
   flutter_riverpod:
   dio:
   dio_cache_interceptor:
+  go_router:
+  get_it:
+  equatable:
 
 dev_dependencies:
   flutter_test:
