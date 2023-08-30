@@ -1,6 +1,6 @@
 abstract class DataState<T> {
   final T? data;
-  final T? error;
+  final dynamic error;
   const DataState({
     this.data,
     this.error,

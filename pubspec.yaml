@@ -13,8 +13,10 @@ dependencies:
     sdk: flutter
 
   flutter_riverpod:
+  path_provider:
   dio:
   dio_cache_interceptor:
+  dio_cache_interceptor_hive_store:
   go_router:
   get_it:
   equatable:
