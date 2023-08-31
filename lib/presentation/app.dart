@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:wikipedia_app/utilites/router/router.dart';
+import 'package:wikipedia_app/utilites/router.dart';
 
 class WikipediaApp extends StatelessWidget {
   const WikipediaApp({super.key});

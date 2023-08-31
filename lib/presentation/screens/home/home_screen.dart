@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wikipedia_app/presentation/pods/home/home_pod.dart';
+import 'package:wikipedia_app/utilites/router.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -106,6 +107,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       itemBuilder: (context, index) {
                         final wiki = wikis[index];
                         return ListTile(
+                          onTap: () {
+                            WikiDetailRoute(index).push(context);
+                          },
                           dense: true,
                           leading: AspectRatio(
                             aspectRatio: 1,

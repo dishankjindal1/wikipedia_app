@@ -7,7 +7,7 @@ import 'package:wikipedia_app/data/apis/search_query/search_query_api.dart';
 import 'package:wikipedia_app/data/repositories/wiki_data/wiki_data_repository.dart';
 import 'package:wikipedia_app/domain/repositories/wiki_data/wiki_data_repository.dart';
 import 'package:wikipedia_app/domain/use_cases/search_query/search_query_usecase.dart';
-import 'package:wikipedia_app/utilites/router/router.dart';
+import 'package:wikipedia_app/utilites/router.dart';
 
 class DependencyInjectionModule {
   Future<void> init() async {
