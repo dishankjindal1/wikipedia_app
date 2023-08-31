@@ -33,8 +33,13 @@ class HomeViewModel extends ChangeNotifier with EquatableMixin {
 
       hasError = false;
       errorMessage = null;
+      // clear list if query is different
+      if (query != null && query != searchQuery) {
+        wikis.clear();
+      }
       // if no data is passed to the [query] then pick up the recent [searchQuery]
       searchQuery = query ?? searchQuery;
+
       // paginated
       final result = await _searchQueryUsecase.trigger(
           searchQuery, 1 + (wikis.length % 10));

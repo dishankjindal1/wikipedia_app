@@ -5,26 +5,33 @@ import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_stor
 
 @immutable
 class DioService {
-  const DioService();
+  DioService(this.tempDirectoryPath) {
+    _dio = _call();
+  }
 
-  Dio call(String directoryPath) {
-    final Dio dio = Dio();
+  final String tempDirectoryPath;
 
-    final cacheInterceptorOptions = CacheOptions(
-      store: HiveCacheStore(directoryPath),
-      policy: CachePolicy.request,
-      hitCacheOnErrorExcept: [401, 403],
-      maxStale: const Duration(days: 7),
-      priority: CachePriority.normal,
-      cipher: null,
-      keyBuilder: CacheOptions.defaultCacheKeyBuilder,
-      allowPostMethod: false,
-    );
+  late final Dio _dio;
+  Dio get callMethod => _dio;
 
-    dio.interceptors.addAll([
-      LogInterceptor(responseBody: true, requestBody: true),
-      DioCacheInterceptor(options: cacheInterceptorOptions)
-    ]);
+  CacheOptions get cacheInterceptorOptions => CacheOptions(
+        store: HiveCacheStore(tempDirectoryPath),
+        policy: CachePolicy.forceCache,
+        hitCacheOnErrorExcept: [401, 403],
+        maxStale: const Duration(days: 7),
+        priority: CachePriority.normal,
+        cipher: null,
+        keyBuilder: CacheOptions.defaultCacheKeyBuilder,
+        allowPostMethod: false,
+      );
+
+  Dio _call() {
+    final Dio dio = Dio()
+      ..interceptors.addAll([
+        DioCacheInterceptor(options: cacheInterceptorOptions),
+        LogInterceptor(responseBody: true, requestBody: true),
+      ]);
+
     return dio;
   }
 }

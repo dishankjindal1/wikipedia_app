@@ -45,9 +45,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               margin: const EdgeInsets.only(bottom: 24),
               child: TextFormField(
                 autofocus: true,
-                onTap: () {
-                  ref.read(homeVMpod).fetchWiki();
-                },
                 onChanged: (value) {
                   if (value.isEmpty) ref.read(homeVMpod).reset();
                   if (value.length < 3) return;

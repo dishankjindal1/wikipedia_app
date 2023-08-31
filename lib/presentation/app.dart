@@ -15,6 +15,9 @@ class WikipediaApp extends StatelessWidget {
     if (Platform.isIOS) {
       return CupertinoApp.router(
         routerConfig: router.routerConfig,
+        localizationsDelegates: const [
+          DefaultMaterialLocalizations.delegate,
+        ],
       );
     } else if (Platform.isAndroid) {
       return MaterialApp.router(
